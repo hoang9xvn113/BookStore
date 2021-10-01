@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre id="demo">
+        
+    </pre>
+
+    <button onclick="ajax('get', '/api/get-book-by-id', {id:1});">asdasdas</button>
+
+    <script>
+        var obj = {id:1};
+        var params = "";
+        for(let key in obj) {
+            params += key + "=" + obj[key] + "&";
+        }
+        if (params != "") {
+            params = "?" + params.substr(0, params.length-1);
+        }
+        url = "/api/get-book-by-id" + params;
+        document.getElementById('demo').innerHTML = params;
+
+    </script>
+    <script src="test.js"></script>
+</body>
+</html>
