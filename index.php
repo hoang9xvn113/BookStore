@@ -41,9 +41,19 @@ $router
     ->any("/admin/quan-ly-nha-cung-cap/chinh-sua-nha-cung-cap", [SupplierController::class, 'editSupplier'])
 
 
+
 //Client
-->get("/", [HomeController::class, 'index'])
-->get("/trangchu", [HomeController::class, 'index']);
+    //Trang chủ
+    ->get("/", [HomeController::class, 'index'])
+    ->get("/trang-chu", [HomeController::class, 'index'])
+    //Tài khoản
+    ->get("/tai-khoan", [CustomerController::class, 'login'])
+    ->get("/tai-khoan/dang-nhap", [CustomerController::class, 'login'])
+    ->any("/tai-khoan/dang-ky", [CustomerController::class, 'signUp'])
+    //Cửa hàng
+    ->get("/cua-hang", [BookController::class, 'displayStore'])
+    ->get("/chi-tiet-sach", [BookController::class, 'viewBookDetail']);
+
 
 
 $app = new App(

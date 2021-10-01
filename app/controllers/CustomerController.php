@@ -33,10 +33,27 @@ class CustomerController
                 echo View::make("admin/customer/edit-customer", ['customer'=>$customer, 'status'=>$status ?? null]);
                 return;
             }
-        }
+        } 
 
         header("Location: /admin/quan-ly-khach-hang");
-        
+    }
+
+    function signUp($request) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $status = $this->customerModel->addCustomer(
+                $request['name'],
+                $request['sex'],
+                $request['phone'],
+                $request['email'],
+                $request['user'],
+                $request['password']
+            );
+        }
+        echo View::make('/account/sign-up', ['status'=>$status ?? null]);
+    }
+
+    function login() {
+        echo View::make('account/login');
     }
 
 }

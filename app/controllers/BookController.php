@@ -71,4 +71,27 @@ class BookController
         $genreList = $this->genreModel->getGenreList();
         echo View::make("admin/book/add-book", ['status'=>$status ?? null, 'genreList'=>$genreList]);
     }
+
+    function displayStore() {
+        $bookList = $this->bookModel->getBookList();
+
+        echo View::make("store/index", ['books'=>$bookList]);
+    }
+
+    function viewBookDetail($request) {
+        if (isset($request['id'])) {
+            $book = $this->bookModel->getBookbyId($request['id']);
+            $bookRelateList = $this->bookModel->getBookListbyGenreId($request['id'], $book['genre_id']);
+
+            $genreList = $this->genreModel->getGenreList();
+            foreach($genreList as $genre) {
+                if ($genre['id'] == $book['genre_id']) {
+                    $book['genre_name'] = $genre['name'];
+                    break;
+                }
+            }
+
+            echo View::make("/store/book-detail", ['book'=>$book, 'bookRelateList'=>$bookRelateList]);
+        }
+    }
 }

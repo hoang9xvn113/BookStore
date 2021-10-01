@@ -31,7 +31,7 @@
             <h1 class="text-align-center mr-b-2">Best Selling Books Ever</h1>
             <div class="best-selling-list owl-carousel mr-b-2">
                 <?php foreach($books as $book): ?>
-                    <a href="book-detail.html" class="product-card">
+                    <a href="/chi-tiet-sach?id=<?= $book['id'] ?>" class="product-card">
                         <div class="product-card-image">
                             <img src="<?= IMAGES_PATH . 'book/' . $book['image'] ?>" alt="">
                         </div>
@@ -82,7 +82,7 @@
 
             <div class="product-list d-grid col-150 mr-b-2">
                 <?php foreach($books as $book): ?>
-                    <a href="" class="product-card">
+                    <a href="/chi-tiet-sach?id=<?= $book['id'] ?>" class="product-card">
                         <div class="product-card-image">
                             <img src="<?= IMAGES_PATH . 'book/' . $book['image'] ?>" alt="">
                         </div>

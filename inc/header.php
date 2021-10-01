@@ -14,12 +14,12 @@
     <header class="mr-b-1">
         <div class="header d-flex pd-tb-1 align-items-center container justify-content-between">
             <div class="logo">
-                <a href="index.html"><img src="<?= IMAGES_PATH ?>Newfolder/logo.webp" alt=""></a>
+                <a href="/trang-chu"><img src="<?= IMAGES_PATH ?>Newfolder/logo.webp" alt=""></a>
             </div>
 
             <div class="d-flex align-items-center">
                 <div>
-                    <a href="login.html" class="btn bg--red pd-btn-1 border-r-2">Sign in</a>
+                    <a href="/tai-khoan/dang-nhap" class="btn bg--red pd-btn-1 border-r-2">Đăng nhập</a>
                 </div>
                 <div class="position-relative cart-icon mr-l-1">
                     <a href="cart.html" class="btn"><i style="font-size:32px" class="fa">&#xf07a;</i></a>
@@ -38,8 +38,8 @@
 
         <nav>
             <ul class="text-align-center">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="store.html">Store</a></li>
+                <li><a href="/trang-chu">Trang chủ</a></li>
+                <li><a href="/cua-hang">Cửa hàng</a></li>
                 <li><a>About</a></li>
                 <li><a>Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>

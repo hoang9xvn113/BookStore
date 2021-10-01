@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     //best-selling-list
     $(".best-selling-list.owl-carousel").owlCarousel({
-        loop: true,
+
         autoplay: true,
         autoplayTimeout: 4000,
         autoplayHoverpause: true,

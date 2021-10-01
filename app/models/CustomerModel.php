@@ -7,18 +7,29 @@ class CustomerModel extends Model
 {
     function getCustomerList()
     {
-        $select = "select * from customer, account where customer.id = customer_id";
-
+        $select = "select * from customer order by update_at desc";
         return $this->select($select);
     }
 
     function getCustomerbyId($id)
     {
-        $select = "select * from customer, account 
-                   where customer.id=$id and customer.id = customer_id";
+        $select = "select * from customer 
+                   where customer.id=$id";
 
         return $this->select($select)[0];
     }
+
+    function addCustomer($name, $sex, $phone, $email, $user, $password)
+    {
+        if (!Helper::checkPhone($phone) ||
+            !Helper::checkEmail($email) ||
+            empty($name) || $sex === "" || empty($password))
+            return false;
+        $insert = "insert into customer(name, sex, phone, email, user, password) 
+                   values('$name', $sex, '$phone', '$email', '$user', '$password')";
+        return $this->insert($insert);
+    }
+
 
     function updateCustomer(
         $customerId,
@@ -36,13 +47,13 @@ class CustomerModel extends Model
         ) {
             return false;
         }
-        $update = "update customer, account set 
+        $update = "update customer set 
                    name='$customerName',
                    sex=$customerSex,
                    phone='$customerPhone',
                    email='$customerEmail',
                    password='$customerPassword' where 
-                   customer.id=$customerId and customer.id=customer_id";
+                   id=$customerId";
 
         return $this->update($update);
     }

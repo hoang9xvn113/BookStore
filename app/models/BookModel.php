@@ -66,7 +66,11 @@ class BookModel extends Model
     function getBookbyId($id)
     {
         $select = "select * from book where id=$id";
-
         return $this->select($select)[0];
+    }
+
+    function getBookListbyGenreId($id, $genreId) {
+        $select = "select * from book where genre_id=$genreId and id!=$id order by update_at desc";
+        return $this->select($select);
     }
 }
