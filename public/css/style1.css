@@ -370,7 +370,7 @@ nav ul li:hover a {
     color: var(--light-gray);
 }
 
-.product-card-info p small, .product-card-info h4 {
+.product-card-info p small, .product-card-info h2 small {
     color: var(--red);
 }
 
