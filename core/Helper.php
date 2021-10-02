@@ -44,6 +44,15 @@ class Helper
         echo "<script>alert('$message') </script>";
     }
 
+    public static function checkSendStatus(bool $status): void {
+        if ($status) {
+            $message = "Gửi thành công";
+        } else {
+            $message = "Gửi không thành công";
+        }
+        echo "<script>alert('$message') </script>";
+    }
+
     /**
      * @return string Trả về trạng thái
      */

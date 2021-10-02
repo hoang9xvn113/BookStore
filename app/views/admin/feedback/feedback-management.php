@@ -1,4 +1,8 @@
-<?php include_once INCLUDE_PATH . "adminHeader.php" ?>
+<?php
+
+use Core\Helper;
+
+include_once INCLUDE_PATH . "adminHeader.php" ?>
 
 
 <div class="wrapper">
@@ -16,21 +20,28 @@
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên khách hàng</th>
-                                    <th>Tài khoản</th>
+                                    <th>Email</th>
                                     <th>Tin nhắn</th>
                                     <th>Trạng thái</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Nguyễn Chân Trần</td>
-                                    <td>Longzxc123</td>
-                                    <td>Dễ VCL</td>
-                                    <td><small class="btn-1 bg-success">Đã phản hồi</small></td>
-                                    <td><a href="" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Trả lời phản hồi</a> <a href="" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a></td>
-                                </tr>
+                                <?php $i = 0 ?>
+                                <?php foreach($comments as $comment): ?>
+                                    <tr>
+                                        <td><?= $i ?></td>
+                                        <td><?= $comment['name'] ?></td>
+                                        <td><?= $comment['email'] ?></td>
+                                        <td><?= $comment['message'] ?></td>
+                                        <td><?= Helper::checkStatus($comment['status']) ?></td>
+                                        <td>
+                                            <a href="phan-hoi/tra-loi?id=<?= $comment['id'] ?>" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Trả lời phản hồi</a>
+                                            <a href="" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a>
+                                        </td>
+                                    </tr>
+                                    <?php $i++ ?>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>

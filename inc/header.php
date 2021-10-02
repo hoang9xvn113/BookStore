@@ -42,7 +42,7 @@
                 <li><a href="/cua-hang">Cửa hàng</a></li>
                 <li><a>About</a></li>
                 <li><a>Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/lien-lac">Contact</a></li>
             </ul>
         </nav>
     </header>

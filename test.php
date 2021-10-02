@@ -1,8 +1,10 @@
 <?php
+$to      = 'hoang9xvn113@gmail.com';
+$subject = 'the subject';
+$message = 'hello';
+$headers = 'From: webmaster@example.com' . "\r\n" .
+    'Reply-To: webmaster@example.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
 
-use Core\Model;
-
-$arr = ["a"=>1, "b"=>2];
-[$a, $b] = $arr;
-
-echo $a;
+mail($to, $subject, $message, $headers);
+?>

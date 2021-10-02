@@ -52,7 +52,9 @@ $router
     ->any("/tai-khoan/dang-ky", [CustomerController::class, 'signUp'])
     //Cửa hàng
     ->get("/cua-hang", [BookController::class, 'displayStore'])
-    ->get("/chi-tiet-sach", [BookController::class, 'viewBookDetail']);
+    ->get("/chi-tiet-sach", [BookController::class, 'viewBookDetail'])
+    //Liên lạc
+    ->any("/lien-lac", [FeedbackController::class, 'contact']);
 
 
 

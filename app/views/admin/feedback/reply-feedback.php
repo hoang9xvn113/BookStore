@@ -14,7 +14,7 @@
                         <div class="form row">
                             <div class="col-7 row">
                                 <div class="col-4">
-                                    <label for="">Mã khách hàng</label>
+                                    <label for="">Tên khách hàng</label>
                                 </div>
                                 <div class="col-8">
                                     <input type="text" name=""  id="" disabled>
@@ -22,7 +22,7 @@
                             </div>
                             <div class="col-7 row">
                                 <div class="col-4">
-                                    <label for="">Tên khách hàng</label>
+                                    <label for="">Email</label>
                                 </div>
                                 <div class="col-8">
                                     <input type="text" name=""  id="" disabled>
