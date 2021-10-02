@@ -16,8 +16,18 @@ class FeedbackController {
         echo View::make("admin/feedback/feedback-management", ['comments'=> $comments]);
     }
 
-    function reply() {
-        echo View::make("admin/feedback/reply-feedback");
+    function reply($request) {
+        if (isset($request['id'])) {
+
+            $comment = $this->feedbackModel->getComment($request['id']);
+            if ($comment) {
+                echo View::make("admin/feedback/reply-feedback", ['comment'=>$comment]);
+                return;
+            }
+        } 
+
+        header("Location: /admin/phan-hoi");
+
     }
 
     function contact($request) {
@@ -30,4 +40,6 @@ class FeedbackController {
         }
         echo View::make("feedback/contact", ['status'=>$status ?? null]);
     }
+
+
 }

@@ -74,20 +74,26 @@ class BookController
 
     function displayStore() {
         $bookList = $this->bookModel->getBookList();
-
         echo View::make("store/index", ['books'=>$bookList]);
     }
 
     function viewBookDetail($request) {
         if (isset($request['id'])) {
-            $book = $this->bookModel->getBookbyId($request['id']);
-            $bookRelateList = $this->bookModel->getBookListbyGenreId($request['id'], $book['genre_id']);
 
-            $genreList = $this->genreModel->getGenreList();
-            foreach($genreList as $genre) {
-                if ($genre['id'] == $book['genre_id']) {
-                    $book['genre_name'] = $genre['name'];
-                    break;
+        
+            $book = $this->bookModel->getBookbyId($request['id']);
+
+            if ($book) {
+                $increase = $this->bookModel->increaseNumberClick($request['id']);
+
+                $bookRelateList = $this->bookModel->getBookListbyGenreId($request['id'], $book['genre_id']);
+
+                $genreList = $this->genreModel->getGenreList();
+                foreach($genreList as $genre) {
+                    if ($genre['id'] == $book['genre_id']) {
+                        $book['genre_name'] = $genre['name'];
+                        break;
+                    }
                 }
             }
 

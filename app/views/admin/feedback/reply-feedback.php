@@ -17,7 +17,7 @@
                                     <label for="">Tên khách hàng</label>
                                 </div>
                                 <div class="col-8">
-                                    <input type="text" name=""  id="" disabled>
+                                    <input type="text" name=""  id="" disabled value="<?= $comment['name'] ?>">
                                 </div>
                             </div>
                             <div class="col-7 row">
@@ -25,7 +25,7 @@
                                     <label for="">Email</label>
                                 </div>
                                 <div class="col-8">
-                                    <input type="text" name=""  id="" disabled>
+                                    <input type="email" name=""  id="" value="<?= $comment['email'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="col-7 row">
@@ -33,7 +33,7 @@
                                     <label for="">Phản hồi của khách</label>
                                 </div>
                                 <div class="col-8">
-                                    <textarea name="" id="" cols="30" rows="10" disabled></textarea>
+                                    <textarea name="" id="" cols="30" rows="10" disabled><?= $comment['message'] ?></textarea>
                                 </div>
                             </div>
                             <div class="col-7 row">
@@ -41,7 +41,7 @@
                                     <label for="">Tin nhắn trả lời</label>
                                 </div>
                                 <div class="col-8">
-                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                    <textarea name="message" id="" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
                             <div class="col-7 row">

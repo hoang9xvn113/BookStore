@@ -19,7 +19,7 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
                 </div>
-                <a href="" class="btn bg--red border-r-2 pd-btn-2">Thêm vào giỏ hàng</a>
+                <a href="/them-vao-gio-hang?id=<?= $book['id'] ?>" class="btn bg--red border-r-2 pd-btn-2">Thêm vào giỏ hàng</a>
             </div>
         </div>
 

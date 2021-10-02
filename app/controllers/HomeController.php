@@ -14,7 +14,7 @@ class HomeController {
     }
     
     public function index() {
-        $bookList = $this->bookModel->getBookList();
-        echo View::make('home/index', ['books'=>$bookList]);
+        $featureBooks = $this->bookModel->getBookListbyClick();
+        echo View::make('home/index', ['featureBooks'=>$featureBooks]);
     }
 }

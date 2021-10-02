@@ -3,7 +3,10 @@
 use Core\App;
 use Core\Router;
 
+
 require_once "core/Autoload.php";
+
+session_start();
 
 $router = new Router;
 
@@ -47,15 +50,19 @@ $router
     ->get("/", [HomeController::class, 'index'])
     ->get("/trang-chu", [HomeController::class, 'index'])
     //Tài khoản
-    ->get("/tai-khoan", [CustomerController::class, 'login'])
-    ->get("/tai-khoan/dang-nhap", [CustomerController::class, 'login'])
+    ->any("/tai-khoan", [CustomerController::class, 'login'])
+    ->any("/tai-khoan/dang-nhap", [CustomerController::class, 'login'])
     ->any("/tai-khoan/dang-ky", [CustomerController::class, 'signUp'])
+    ->get("/tai-khoan/dang-xuat", [CustomerController::class, "logout"])
     //Cửa hàng
     ->get("/cua-hang", [BookController::class, 'displayStore'])
     ->get("/chi-tiet-sach", [BookController::class, 'viewBookDetail'])
     //Liên lạc
-    ->any("/lien-lac", [FeedbackController::class, 'contact']);
-
+    ->any("/lien-lac", [FeedbackController::class, 'contact'])
+    //Giỏ hàng
+    ->get("/gio-hang", [CartController::class, 'index'])
+    ->get("/them-vao-gio-hang", [CartController::class, 'addtoCart'])
+    ->post("/thanh-toan", [CartController::class, 'checkout']);
 
 
 $app = new App(

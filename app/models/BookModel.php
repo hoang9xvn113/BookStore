@@ -24,6 +24,11 @@ class BookModel extends Model
         return  $this->insert($insert);
     }
 
+    function increaseNumberClick($id) {
+        $update = "update book set number_click = number_click + 1 where id=$id";
+        return $this->update($update);
+    }
+
     function updateBook(
         int $id,
         string $name,
@@ -73,4 +78,11 @@ class BookModel extends Model
         $select = "select * from book where genre_id=$genreId and id!=$id order by update_at desc";
         return $this->select($select);
     }
+
+    function getBookListbyClick() {
+        $select = "select * from book order by number_click desc, update_at desc";
+        return $this->select($select);
+    }
+
+
 }

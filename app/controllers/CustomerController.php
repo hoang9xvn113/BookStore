@@ -1,5 +1,6 @@
 <?php
 
+use Core\Session;
 use Core\View;
 
 class CustomerController
@@ -52,8 +53,22 @@ class CustomerController
         echo View::make('/account/sign-up', ['status'=>$status ?? null]);
     }
 
-    function login() {
-        echo View::make('account/login');
+    function login($request) {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $status = $this->customerModel->checkLogin($request['user'], $request['password']);
+            if ($status) {
+                $_SESSION['account_id'] = $status['id'];
+                header("Location: /");
+            } else {
+
+            }
+        }
+        echo View::make('account/login', ['status'=>$status ?? null]);
+    }
+
+    function logout() {
+        $_SESSION['account_id'] = null;
+        header("Location: /");
     }
 
 }

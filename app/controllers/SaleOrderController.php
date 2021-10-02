@@ -4,6 +4,8 @@ use Core\View;
 
 class SaleOrderController
 {
+    public $saleOrderModel;
+
     function index() {
         echo View::make("admin/sale-order/sale-order-management");
     }

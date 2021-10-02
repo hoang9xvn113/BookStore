@@ -1,5 +1,4 @@
 <?php include_once INCLUDE_PATH . 'header.php' ?>
-
     <!-- Main -->
     <main>
         <div class="bg--pink">
@@ -30,14 +29,14 @@
         <div class="best-selling container mr-t-1">
             <h1 class="text-align-center mr-b-2">Best Selling Books Ever</h1>
             <div class="best-selling-list owl-carousel mr-b-2">
-                <?php foreach($books as $book): ?>
+                <?php foreach($featureBooks as $book): ?>
                     <a href="/chi-tiet-sach?id=<?= $book['id'] ?>" class="product-card">
                         <div class="product-card-image">
                             <img src="<?= IMAGES_PATH . 'book/' . $book['image'] ?>" alt="">
                         </div>
                         <div class="product-card-info">
                             <h3><?= $book['name'] ?></h3>
-                            <p><?= $book['genre_name'] ?></p>
+                            <p><?= $book['author'] ?></p>
                             <div class="d-flex align-items-center">
                                 <div class="mr-r-1">
                                     <h5>        
@@ -60,7 +59,7 @@
         <!-- Latest Published items -->
         <div class="lastest-published-items container mr-b-3">
             <div class="title mr-b-2 d-flex align-items-center justify-content-between">
-                <h1>Latest Published items</h1>
+                <h1>Các sản phẩm nổi bật nhất</h1>
                 <div class="categories owl-carousel">
                     <div class="category-card">
                         <a class="btn bg--white active border--dark border-r-2 pd-btn-1">All</a>
@@ -81,14 +80,14 @@
             </div>
 
             <div class="product-list d-grid col-150 mr-b-2">
-                <?php foreach($books as $book): ?>
+                <?php foreach($featureBooks as $book): ?>
                     <a href="/chi-tiet-sach?id=<?= $book['id'] ?>" class="product-card">
                         <div class="product-card-image">
                             <img src="<?= IMAGES_PATH . 'book/' . $book['image'] ?>" alt="">
                         </div>
                         <div class="product-card-info">
                             <h3><?= $book['name'] ?></h3>
-                            <p><?=  $book['genre_name'] ?></p>
+                            <p><?=  $book['author'] ?></p>
                             <div class="d-flex align-items-center">
                             <div class="mr-r-1">
                                 <h5>        
