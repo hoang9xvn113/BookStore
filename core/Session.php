@@ -34,8 +34,10 @@ class Session
         if (Session::getSession("account_id") == null) {
             header("Location: $redirect");
         }
+    }
 
-
+    static function checkAdminLogin() {
+        Session::checkLogin("/admin/dang-nhap");
     }
 
     static function checkClientLogin() {

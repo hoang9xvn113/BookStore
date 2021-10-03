@@ -66,6 +66,7 @@ class CustomerController
         echo View::make('account/login', ['status'=>$status ?? null]);
     }
 
+
     function logout() {
         $_SESSION['account_id'] = null;
         header("Location: /");

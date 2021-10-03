@@ -1,4 +1,9 @@
+<?php
 
+use Core\Session;
+
+Session::checkAdminLogin();
+?>
 
 <!DOCTYPE html>
 <html lang="en">

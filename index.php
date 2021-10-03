@@ -17,6 +17,7 @@ $router
     //Trang chu
     ->get("/admin/dashboard", [AdminController::class, 'index'])
     ->get("/admin", [AdminController::class, 'index'])
+    ->any("/admin/dang-nhap", [AdminController::class, 'login'])
     //Quản lý sách
     ->get("/admin/quan-ly-sach", [BookController::class, 'index'])
     ->any("/admin/quan-ly-sach/sua-thong-tin-sach", [BookController::class, 'editBookInfo'])
