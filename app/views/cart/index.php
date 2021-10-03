@@ -1,5 +1,9 @@
-<?php include_once INCLUDE_PATH . "/header.php" ?>
-<form action="/thanh-toan" method="POST">
+<?php
+
+use Core\Helper;
+
+include_once INCLUDE_PATH . "/header.php" ?>
+<form action="" method="POST">
     <main class="container">
         <div class="back position-relative mr-b-3">
             <div class="back-image">
@@ -35,6 +39,11 @@
         <label for="">Địa chỉ giao hàng</label>
         <input type="text" name="address">
         <p class="text-align-right mr-b-2"><button type="submit" class="btn test bg--red border-r-2 pd-btn-2">Đặt hàng</a></button>
+        <?php
+        if (isset($status)) {
+            Helper::checkAddStatus($status);
+        }
+        ?>
 
     </main>
     </form>

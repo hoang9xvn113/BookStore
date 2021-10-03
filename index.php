@@ -37,7 +37,7 @@ $router
     ->any("/admin/quan-ly-don-hang-nhap/chi-tiet-don-hang-nhap", [ImportOrderController::class, 'editImportOrder'])
     //Quản lý đơn hàng bán
     ->get("/admin/quan-ly-don-hang-ban", [SaleOrderController::class, "index"])
-    ->get("/admin/quan-ly-don-hang-ban/chi-tiet-don-hang-ban", [SaleOrderController::class, "editSaleOrder"])
+    ->any("/admin/quan-ly-don-hang-ban/chi-tiet-don-hang-ban", [SaleOrderController::class, "editSaleOrder"])
     //Quản lý nhà cung cấp
     ->get("/admin/quan-ly-nha-cung-cap", [SupplierController::class, 'index'])
     ->any("/admin/quan-ly-nha-cung-cap/them-nha-cung-cap", [SupplierController::class, 'addSupplier'])
@@ -60,7 +60,7 @@ $router
     //Liên lạc
     ->any("/lien-lac", [FeedbackController::class, 'contact'])
     //Giỏ hàng
-    ->get("/gio-hang", [CartController::class, 'index'])
+    ->any("/gio-hang", [CartController::class, 'index'])
     ->get("/them-vao-gio-hang", [CartController::class, 'addtoCart'])
     ->post("/thanh-toan", [CartController::class, 'checkout']);
 

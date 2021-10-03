@@ -6,12 +6,35 @@ class SaleOrderController
 {
     public $saleOrderModel;
 
-    function index() {
-        echo View::make("admin/sale-order/sale-order-management");
+    function __construct()
+    {
+        $this->saleOrderModel = new SaleOrderModel;
     }
 
-    function editSaleOrder() {
-        echo View::make("admin/sale-order/edit-sale-order");
+    function index() {
+        $saleOrderList = $this->saleOrderModel->getSaleOrderList();
+        echo View::make("admin/sale-order/sale-order-management", ['saleOrders'=>$saleOrderList]);
+    }
+
+    function editSaleOrder($request) {
+        if (isset($request['id'])) {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $status = $this->saleOrderModel->updateSaleOrder(
+                    $request['id'],
+                    $request['date'],
+                    $request['status']
+                );
+            }
+            $saleOrderDetail = $this->saleOrderModel->getSaleOrderDetail($request['id']);
+            if ($saleOrderDetail) {
+                echo View::make("admin/sale-order/edit-sale-order", ['saleOrderDetail'=>$saleOrderDetail, 'status'=>$status]);
+                return;
+            }
+        }
+
+        header("Location: /admin/quan-ly-don-hang-ban");
+        
+
     }
 
 }

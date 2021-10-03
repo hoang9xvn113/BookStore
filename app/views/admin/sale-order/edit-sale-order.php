@@ -1,6 +1,11 @@
-<?php include_once INCLUDE_PATH . "adminHeader.php" ?>
+<?php
+
+use Core\Helper;
+
+include_once INCLUDE_PATH . "adminHeader.php" ?>
 
 
+<form action="" method="post">
 <div class="wrapper">
         <div class="row">
             <div class="col-12 col-m-12 col-sm-12">
@@ -9,7 +14,7 @@
                         <h3>
                             Chi tiết đơn hàng 01
                         </h3>
-                        <span><a href="" class="btn-2 bg-warning"><i class="fas fa-edit"></i> Cập nhật đơn hàng</a></span>
+                        <span><button type="submit" class="btn-2 bg-warning"><i class="fas fa-edit"></i> Cập nhật đơn hàng</button></span>
                     </div>
                     <div class="card-content">
                         <div class="form row">
@@ -27,21 +32,28 @@
                                     </thead>
         
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td></td>
-                                            <td>The Knowledge: Tương Lai Bố Tướng (Tái Bản 2021</td>
-                                            <td>100.000VND</td>
-                                            <td><input type="number" name="" min="0" id=""></td>
-                                            <td>500.000</td>
-                                            <td></a> <a href="" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a></td>
-                                        </tr>
+                                        <?php $i=1 ?>
+                                        <?php $total = 0 ?>
+                                        <?php foreach($saleOrderDetail as $book): ?>
+                                            <tr>
+                                                <?php $subtotal =  $book['price']*$book['amount'] ?>
+                                                <?php $total += $subtotal ?>
+                                                <td><?= $i ?></td>
+                                                <td><img src="<?= IMAGES_PATH . "book/" . $book['image'] ?>" alt=""></td>
+                                                <td><?= $book['name'] ?></td>
+                                                <td><?= $book['price'] ?></td>
+                                                <td><?= $book['amount'] ?></td>
+                                                <td><?=  $subtotal ?></td>
+                                                <td></a> <a href="" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a></td>
+                                            </tr>
+                                            <?php $i++ ?>
+                                        <?php endforeach ?>
                                     </tbody>
 
                                     <tfoot>
                                         <tr>
                                             <th colspan="5" style="text-align: right;">Tổng tiền: </th>
-                                            <th>500000</th>
+                                            <th><?= $total ?></th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -53,8 +65,10 @@
                                     </div>
 
                                     <div class="col-8">
-                                        <select name="" id="">
-                                            <option value="">Chưa vận chuyển</option>
+                                        <select name="status" id="">
+                                            <option value="0">Đang vận chuyển</option>
+                                            <option value="1">Hoàn thành vận chuyển</option>
+                                            <option value="-1">Hủy vận chuyển</option>
                                         </select>
                                     </div>
                                 </div>
@@ -64,9 +78,14 @@
                                     </div>
 
                                     <div class="col-8">
-                                        <input type="date" name="" id="">
+                                        <input type="date" name="date" id="" value="<?= date("Y-m-d") ?>">
                                     </div>
                                 </div>
+                                <?php
+                                    if (isset($status)) {
+                                        Helper::checkEditStatus($status);
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -74,5 +93,6 @@
             </div>
         </div>
     </div>
+</form>
 
 <?php include_once INCLUDE_PATH . "adminFooter.php" ?>

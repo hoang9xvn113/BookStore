@@ -1,6 +1,5 @@
 <?php
 
-    $a[] = 1;
+    $a = "amount";
 
-    print_r($a);
 ?>

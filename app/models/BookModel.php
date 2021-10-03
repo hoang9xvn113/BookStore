@@ -84,5 +84,15 @@ class BookModel extends Model
         return $this->select($select);
     }
 
+    function getBookListbyBestSelling() {
+        $select = "SELECT book.id, book.image, book.price ,book.name, book.author, price*SUM(sale_order_detail.amount) as total 
+        FROM book, sale_order_detail 
+        WHERE book.id = sale_order_detail.book_id 
+        GROUP BY sale_order_detail.book_id 
+        ORDER BY total desc 
+        limit 6 ";
+        return $this->select($select);
+    }
+
 
 }

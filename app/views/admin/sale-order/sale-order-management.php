@@ -1,4 +1,8 @@
-<?php include_once INCLUDE_PATH . "adminHeader.php" ?>
+<?php
+
+use Core\Helper;
+
+include_once INCLUDE_PATH . "adminHeader.php" ?>
 
 
 <div class="wrapper">
@@ -25,16 +29,21 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>030303</td>
-                                    <td>Nguyên Trần</td>
-                                    <td>Hữu Hòa, Thanh Trì</td>
-                                    <td>300.000VNĐ</td>
-                                    <td>23/06/2021</td>
-                                    <td>26/06/2021</td>
-                                    <th><small class="btn-1 bg-warning">Đang giao</small></th>
-                                    <td><a href="" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Xem</a> <a href="" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a></td>
-                                </tr>
+                                <?php foreach($saleOrders as $saleOrder): ?>
+                                    <tr>
+                                        <td><?= $saleOrder['id'] ?></td>
+                                        <td><?= $saleOrder['name'] ?></td>
+                                        <td><?= $saleOrder['address'] ?></td>
+                                        <td><?= $saleOrder['total'] ?></td>
+                                        <td><?= $saleOrder['purchase_date'] ?></td>
+                                        <td><?= $saleOrder['delivery_date'] ?></td>
+                                        <td><?= Helper::checkStatus($saleOrder['status']) ?></td>
+                                        <td>
+                                            <a href="/admin/quan-ly-don-hang-ban/chi-tiet-don-hang-ban?id=<?= $saleOrder['id'] ?>" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Xem</a> 
+                                            <a href="" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>

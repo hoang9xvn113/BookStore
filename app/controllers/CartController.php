@@ -5,21 +5,39 @@ use Core\View;
 
 class CartController {
     public $bookModel;
+    public $saleOrderModel;
 
     function __construct()
     {
         $this->bookModel = new BookModel;
+        $this->saleOrderModel = new SaleOrderModel;
     }
 
-    function index() {
-        $books = [];
+    function index($request) {
+        $books = [];        
+
+        $data = [];
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            Session::checkClientLogin();
+            $n = (count($request) - 1)/2;
+            for($i=0;$i<$n;$i++) {
+                $data[] = [$request['id'.$i], $request['amount'.$i]];
+            }
+            $status = $this->saleOrderModel->addSaleOrder(
+                $_SESSION['account_id'],
+                $request['address'],
+                $data,
+            );
+            $_SESSION['cart'] = [];
+        }
+        
         if (isset($_SESSION['cart'])) {
             foreach($_SESSION['cart'] as $id) {
                 $book = $this->bookModel->getBookbyId($id);
                 $books[] = $book;
             }
         }
-        echo View::make("cart/index", ["books"=>$books]);
+        echo View::make("cart/index", ["books"=>$books, 'status'=>$status ?? null]);
     }
 
     function addtoCart($request) {
@@ -33,10 +51,6 @@ class CartController {
     }
 
     function checkout($request) {
-        Session::checkClientLogin();
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            
-        }
-        echo View::make("cart/checkout", ['request'=>$request]);
+
     }
 }
