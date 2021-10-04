@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 04, 2021 lúc 01:35 PM
+-- Thời gian đã tạo: Th10 04, 2021 lúc 03:10 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.11
 
@@ -111,6 +111,7 @@ CREATE TABLE `feedback` (
   `name` text NOT NULL,
   `email` text NOT NULL,
   `message` text NOT NULL,
+  `reply` text NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `update_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -119,9 +120,11 @@ CREATE TABLE `feedback` (
 -- Đang đổ dữ liệu cho bảng `feedback`
 --
 
-INSERT INTO `feedback` (`id`, `name`, `email`, `message`, `status`, `update_at`) VALUES
-(1, 'Nguyễn Văn Hoàng', 'admin@admin.vn', 'test', 0, '2021-10-02'),
-(2, 'Nguyễn Văn Hoàng', 'admin@admin.vn', 'test1', 0, '2021-10-02');
+INSERT INTO `feedback` (`id`, `name`, `email`, `message`, `reply`, `status`, `update_at`) VALUES
+(1, 'Nguyễn Văn Hoàng', 'admin@admin.vn', 'test', '', 0, '2021-10-02'),
+(2, 'Nguyễn Văn Hoàng', 'admin@admin.vn', 'test1', '', 0, '2021-10-02'),
+(5, 'Nguyễn Tấn Tường', '1851061726@e.tlu.edu.vn', 'Lzxczxczxczxcz', 'asdasdasdasd', 1, '2021-10-04'),
+(6, 'Nguyễn Tấn Tường', '1851061726@e.tlu.edu.vn', 'zxcazxcasdasd', '', 0, '2021-10-04');
 
 -- --------------------------------------------------------
 
@@ -416,7 +419,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT cho bảng `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `genre`
