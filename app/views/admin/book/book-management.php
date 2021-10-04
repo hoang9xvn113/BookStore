@@ -11,6 +11,14 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                     <div class="card-header">
                         <h3>
                             Bảng sách
+                            <form action="" method="get">
+                            <select name="type" id="">
+                                <option value="0">Xem tất cả</option>
+                                <option value="1">Xem sản phẩm bán chạy</option>
+                                <option value="2">Xem sản phẩm hot</option>
+                            </select>
+                            <button type="submit">Xem</button>
+                            </form>
                         </h3>
                         <span><a href="/admin/quan-ly-sach/them-sach" class="btn-2 bg-success"><i class="fas fa-plus"></i> Thêm sách</a></span>
                     </div>
@@ -26,6 +34,8 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                                     <th>Nội dung</th>
                                     <th>Số lượng</th>
                                     <th>Giá bán</th>
+                                    <th>Số lượt xem</th>
+                                    <th>Số lượng bán</th>
                                     <th>Trạng thái</th>
                                 </tr>
                             </thead>
@@ -42,6 +52,8 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                                         <td><?= $book['content'] ?></td>
                                         <td><?= $book['amount'] ?></td>
                                         <td><?= $book['price'] ?></td>
+                                        <td><?= $book['number_click'] ?> lượt xem</td>
+                                        <td><?= $book['saleAmount'] ?> quyển</td>
                                         <td><?= Helper::checkStatus($book['status']) ?></td>
                                         <td>
                                             <a href="/admin/quan-ly-sach/sua-thong-tin-sach?id=<?= $book['id'] ?>" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Sửa</a> 

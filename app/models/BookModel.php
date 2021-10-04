@@ -68,7 +68,7 @@ class BookModel extends Model
 
     function getBookList()
     {
-        $select = "SELECT book.id, book.name, genre.name as genre_name, author, price, content, amount, image, book.status FROM book, genre WHERE genre_id = genre.id ORDER BY book.update_at desc";
+        $select = "SELECT book.id, book.name, genre.name as genre_name, author, price, content, book.amount, image,sale_order_detail.amount as saleAmount, number_click, book.status FROM book, genre, sale_order_detail WHERE genre_id = genre.id and book.id = sale_order_detail.book_id ORDER BY book.update_at desc";
 
         return $this->select($select);
     }
@@ -80,22 +80,25 @@ class BookModel extends Model
     }
 
     function getBookListbyGenreId($id, $genreId) {
-        $select = "select * from book where genre_id=$genreId and id!=$id order by update_at desc";
+        $select = "SELECT book.id, book.name, genre.name as genre_name, author, price, content, amount, image, number_click, book.status 
+        FROM book, genre 
+        WHERE genre_id = genre.id and genre_id=$genreId and id!=$id order by customer.update_at desc";
         return $this->select($select);
     }
 
     function getBookListbyClick() {
-        $select = "select * from book order by number_click desc, update_at desc";
+        $select = "SELECT book.id, book.name, genre.name as genre_name, author, price, content, book.amount, image,sale_order_detail.amount as saleAmount, number_click, book.status 
+        FROM book, genre, sale_order_detail
+        WHERE genre_id = genre.id and book.id = sale_order_detail.book_id 
+        order by number_click desc, book.update_at desc";
         return $this->select($select);
     }
 
     function getBookListbyBestSelling() {
-        $select = "SELECT book.id, book.image, book.price ,book.name, book.author, price*SUM(sale_order_detail.amount) as total 
-        FROM book, sale_order_detail 
-        WHERE book.id = sale_order_detail.book_id 
-        GROUP BY sale_order_detail.book_id 
-        ORDER BY total desc 
-        limit 6 ";
+        $select = "SELECT book.id, book.name, genre.name as genre_name, book.author, book.price, book.content, book.amount, book.image, number_click, book.status, sale_order_detail.amount as saleAmount
+        FROM book,genre, sale_order_detail 
+        WHERE genre_id = genre.id and book.id = sale_order_detail.book_id 
+        ORDER BY saleAmount desc ";
         return $this->select($select);
     }
 
