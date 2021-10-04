@@ -17,11 +17,15 @@ class BookController
 
 
     function index($request) {
-        if ($request['type'] == 1) {
-            $bookList = $this->bookModel->getBookListbyBestSelling();
-        } else if ($request['type'] == 2) {
-            $bookList = $this->bookModel->getBookListbyClick();
-        } else if ($request['type'] == 0 || !isset($request['type'])) {
+        if (isset($request['type'])) {
+            if ($request['type'] == 1) {
+                $bookList = $this->bookModel->getBookListbyBestSelling();
+            } else if ($request['type'] == 2) {
+                $bookList = $this->bookModel->getBookListbyClick();
+            } else if ($request['type']==0) {
+                $bookList = $this->bookModel->getBookList();
+            }
+        } else {
             $bookList = $this->bookModel->getBookList();
         }
         echo View::make("admin/book/book-management", ["bookList"=>$bookList]);

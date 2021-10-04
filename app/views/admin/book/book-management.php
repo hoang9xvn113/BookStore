@@ -46,7 +46,7 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                                     <tr>
                                         <td><?= $i ?></td>
                                         <td><img src="<?= IMAGES_PATH. "book/" . $book['image'] ?>" alt=""></td>
-                                        <td><?= $book['name'] ?></td>
+                                        <td><?= $book['name'] ?></t d>
                                         <td><?= $book['author'] ?></td>
                                         <td><?= $book['genre_name'] ?></td>
                                         <td><?= $book['content'] ?></td>
