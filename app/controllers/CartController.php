@@ -18,17 +18,21 @@ class CartController {
 
         $data = [];
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            Session::checkClientLogin();
-            $n = (count($request) - 1)/2;
-            for($i=0;$i<$n;$i++) {
-                $data[] = [$request['id'.$i], $request['amount'.$i]];
+            if ($_SESSION['cart']) {
+                Session::checkClientLogin();
+                $n = (count($request) - 1)/2;
+                for($i=0;$i<$n;$i++) {
+                    $data[] = [$request['id'.$i], $request['amount'.$i]];
+                }
+                $status = $this->saleOrderModel->addSaleOrder(
+                    $_SESSION['account_id'],
+                    $request['address'],
+                    $data,
+                );
+                $_SESSION['cart'] = [];
+            } else {
+                $status = false;
             }
-            $status = $this->saleOrderModel->addSaleOrder(
-                $_SESSION['account_id'],
-                $request['address'],
-                $data,
-            );
-            $_SESSION['cart'] = [];
         }
         
         if (isset($_SESSION['cart'])) {

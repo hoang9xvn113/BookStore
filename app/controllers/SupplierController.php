@@ -50,6 +50,12 @@ class SupplierController
         }
 
         header("Location: /admin/quan-ly-nha-cung-cap");
+    }
 
+    function deleteSupplier($request) {
+        if (isset($request['id'])) {
+            $status = $this->supplierModel->deleteSupplier($request['id']);
+        }
+        header("Location: /admin/quan-ly-nha-cung-cap");
     }
 }

@@ -41,5 +41,12 @@ class FeedbackController {
         echo View::make("feedback/contact", ['status'=>$status ?? null]);
     }
 
+    function deleteComment($request) {
+        if (isset($request['id'])) {
+            $status = $this->feedbackModel->deleteComment($request['id']);
+        }
+        header("Location: /admin/phan-hoi");
+    }
+
 
 }

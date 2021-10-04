@@ -47,8 +47,8 @@ class BookController
         }
 
         header("Location: /admin/quan-ly-sach");
-
     }
+
 
     function addBook($request) {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -72,8 +72,13 @@ class BookController
         echo View::make("admin/book/add-book", ['status'=>$status ?? null, 'genreList'=>$genreList]);
     }
 
-    function displayStore() {
-        $bookList = $this->bookModel->getBookList();
+    function displayStore($request) {
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            $bookList = $this->bookModel->getBookList();
+        }
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $bookList = $this->bookModel->searchBookListbyName($request['name']);
+        }
         echo View::make("store/index", ['books'=>$bookList]);
     }
 
@@ -99,5 +104,13 @@ class BookController
 
             echo View::make("/store/book-detail", ['book'=>$book, 'bookRelateList'=>$bookRelateList]);
         }
+    }
+
+    function deleteBook($request) {
+        if (isset($request['id'])) {
+            $status = $this->bookModel->deleteBook($request['id']);
+        }
+        header("Location: /admin/quan-ly-sach?status=$status");
+
     }
 }

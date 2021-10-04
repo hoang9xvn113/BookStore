@@ -3,27 +3,23 @@
 use Core\View;
 
 class AdminController {
+
+    public $saleOrderModel;
+
+    function __construct()
+    {
+        $this->saleOrderModel = new SaleOrderModel;
+    }
+
     public function index() {
-        echo View::make('admin/index');
+        $notify = [
+            "total"=>$this->saleOrderModel->getSaleinMonth(),
+            "numberOrder"=>$this->saleOrderModel->getNumberOrderinMonth(),
+            "unActiveNumber"=>$this->saleOrderModel->getOrderunActiveinMoth(),
+            "cancelNumber"=>$this->saleOrderModel->getOrderCancelinMoth()
+        ];
+        echo View::make('admin/index', ['notify'=>$notify]);
     }
 
-    function login($request) {
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            if (
-                $request['user'] == "admin" &&
-                $request['password'] == "admin"
-            ) $status = 1;
-            else {
-                $status = 0;
-            }
-            
-            if ($status) {
-                $_SESSION['account_id'] = $status;
-                header("Location: /admin/dashboard");
-            } else {
 
-            }
-        }
-        echo View::make('admin/login', ['status'=>$status ?? null]);
-    }
 }

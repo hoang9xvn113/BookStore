@@ -25,4 +25,12 @@ class FeedbackModel extends Model
         $select = "select * from feedback where id=$id";
         return $this->select($select)[0];
     }
+
+    function deleteComment($id) {
+        if ($id === "") {
+            return false;
+        }
+        $delete = "delete from feedback where id = $id";
+        return $this->delete($delete);
+    }
 }

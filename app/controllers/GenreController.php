@@ -39,6 +39,12 @@ class GenreController
         }
 
         header("Location: /admin/quan-ly-the-loai");
+    }
 
+    function deleteGenre($request) {
+        if (isset($request['id'])) {
+            $status = $this->genreModel->deleteGenre($request['id']);
+        }
+        header("Location: /admin/quan-ly-the-loai");
     }
 }

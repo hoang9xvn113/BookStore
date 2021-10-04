@@ -42,10 +42,10 @@ if (!isset($_SESSION['cart'])) {
             </div>
         </div>
 
-        <div class="search input-group">
-            <input type="text" placeholder="Search book by author or publisher">
+        <form action="/cua-hang" method="POST" class="search input-group">
+            <input type="text" name="name" placeholder="Tìm kiếm sách theo tên">
             <button class="btn bg--white text--red"><i class="fa fa-search"></i></button>
-        </div>
+        </form>
 
         <nav>
             <ul class="text-align-center">

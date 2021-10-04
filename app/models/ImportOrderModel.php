@@ -63,5 +63,11 @@ class ImportOrderModel extends Model
         return $this->insert_multi($insert);
     }
 
+    function cancelImportOrder($id) {
+        if ($id === "") return false;
+        $update = "update import_order set status=-1 where id=$id and status=0";
+        return $this->update($update);
+    }
+
     
 }

@@ -33,8 +33,13 @@ class SaleOrderController
         }
 
         header("Location: /admin/quan-ly-don-hang-ban");
-        
+    }
 
+    function cancelSaleOrder($request) {
+        if (isset($request['id'])) {
+            $status = $this->saleOrderModel->cancelSaleOrder($request['id']);
+        }
+        header("Location: /admin/quan-ly-don-hang-ban");
     }
 
 }

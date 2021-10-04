@@ -29,6 +29,11 @@ class BookModel extends Model
         return $this->update($update);
     }
 
+    function searchBookListbyName($name) {
+        $select = "SELECT * FROM `book` WHERE name LIKE '%$name%'";
+        return $this->select($select);
+    }
+
     function updateBook(
         int $id,
         string $name,
@@ -92,6 +97,14 @@ class BookModel extends Model
         ORDER BY total desc 
         limit 6 ";
         return $this->select($select);
+    }
+
+    function deleteBook($id) {
+        if ($id === "") {
+            return false;
+        }
+        $update = "update book set status = 0 where id = $id";
+        return $this->update($update);
     }
 
 

@@ -42,7 +42,7 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                                         <td><?= Helper::checkStatus($importOrder['status']) ?></td>
                                         <td>
                                             <a href="/admin/quan-ly-don-hang-nhap/chi-tiet-don-hang-nhap?id=<?= $importOrder['id'] ?>" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Xem</a> 
-                                            <a href="" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a>
+                                            <a href="/admin/quan-ly-nha-cung-cap/huy-don-hang-nhap?id=<?= $importOrder['id'] ?>" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a>
                                         </td>
                                     </tr>
                                     <?php $i++ ?>

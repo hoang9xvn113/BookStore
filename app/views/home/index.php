@@ -27,7 +27,7 @@
 
         <!-- Best selling -->
         <div class="best-selling container mr-t-1">
-            <h1 class="text-align-center mr-b-2">Best Selling Books Ever</h1>
+            <h1 class="text-align-center mr-b-2">Sách bán chạy nhất</h1>
             <div class="best-selling-list owl-carousel mr-b-2">
                 <?php foreach($bestSellingBooks as $book): ?>
                     <a href="/chi-tiet-sach?id=<?= $book['id'] ?>" class="product-card">

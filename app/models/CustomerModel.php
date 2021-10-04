@@ -7,33 +7,16 @@ class CustomerModel extends Model
 {
     function getCustomerList()
     {
-        $select = "select * from customer order by update_at desc";
+        $select = "select customer.id, name, sex, phone, email, user, password from customer,account where account_id=account.id order by update_at desc";
         return $this->select($select);
     }
 
     function getCustomerbyId($id)
     {
-        $select = "select * from customer 
-                   where customer.id=$id";
+        $select = "select customer.id, name, sex, phone, email, user, password from customer, account
+                   where customer.id=$id and account_id=account.id";
 
         return $this->select($select)[0];
-    }
-
-    function checkLogin($user, $password) {
-        $select = "select * from customer where user = '$user' and password='$password'";
-        $param = $this->select($select);
-        return $param == null ? [] : $param[0];
-    }
-
-    function addCustomer($name, $sex, $phone, $email, $user, $password)
-    {
-        if (!Helper::checkPhone($phone) ||
-            !Helper::checkEmail($email) ||
-            empty($name) || $sex === "" || empty($password))
-            return false;
-        $insert = "insert into customer(name, sex, phone, email, user, password) 
-                   values('$name', $sex, '$phone', '$email', '$user', '$password')";
-        return $this->insert($insert);
     }
 
     function updateCustomer(
@@ -52,14 +35,27 @@ class CustomerModel extends Model
         ) {
             return false;
         }
-        $update = "update customer set 
+        $update = "update customer, account set 
                    name='$customerName',
                    sex=$customerSex,
                    phone='$customerPhone',
                    email='$customerEmail',
                    password='$customerPassword' where 
-                   id=$customerId";
+                   customer.id=$customerId and account_id = account.id";
 
         return $this->update($update);
+    }
+
+    function deleteCustomer($id) {
+        if ($id === "") return false;
+        $account_id = $this->select("select * from customer where id=$id")[0]['customer_id'];
+        $delete_cusomter = "delete from customer where id=$id";
+        $status = $this->delete($delete_cusomter);
+        if ($status) {
+            $delete_account = "delete from account where id=$account_id";
+            return $this->delete($delete_account);
+        }
+        return false;
+        
     }
 }

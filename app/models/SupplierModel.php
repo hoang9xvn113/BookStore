@@ -50,4 +50,12 @@ class SupplierModel extends Model
         $select = "select * from supplier where id=$id";
         return $this->select($select)[0] ?? [];
     }
+
+    function deleteSupplier($id) {
+        if ($id === "") {
+            return false;
+        }
+        $update = "update supplier set status = 0 where id=$id";
+        return $this->update($update);
+    }
 }

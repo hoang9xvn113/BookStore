@@ -1,6 +1,6 @@
 <?php
 
-use Core\Session;
+
 use Core\View;
 
 class CustomerController
@@ -39,37 +39,18 @@ class CustomerController
         header("Location: /admin/quan-ly-khach-hang");
     }
 
-    function signUp($request) {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $status = $this->customerModel->addCustomer(
-                $request['name'],
-                $request['sex'],
-                $request['phone'],
-                $request['email'],
-                $request['user'],
-                $request['password']
-            );
+    function deleteCustomer($request) {
+        if (isset($request['id'])) {
+            $status = $this->customerModel->deleteCustomer($request['id']);
         }
-        echo View::make('/account/sign-up', ['status'=>$status ?? null]);
-    }
-
-    function login($request) {
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $status = $this->customerModel->checkLogin($request['user'], $request['password']);
-            if ($status) {
-                $_SESSION['account_id'] = $status['id'];
-                header("Location: /");
-            } else {
-
-            }
-        }
-        echo View::make('account/login', ['status'=>$status ?? null]);
+        header("Location: /admin/quan-ly-khach-hang");
     }
 
 
-    function logout() {
-        $_SESSION['account_id'] = null;
-        header("Location: /");
-    }
+
+
+
+
+
 
 }

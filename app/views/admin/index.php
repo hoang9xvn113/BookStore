@@ -6,7 +6,7 @@
         <div class="col-3 col-m-6 col-sm-6">
             <div class="counter bg-primary">
                 <i class="fas fa-money-bill"></i>
-                <h3>10.000.000 VNĐ</h3>
+                <h3><?= number_format($notify['total']) ?> VNĐ</h3>
                 <p>Doanh thu trong tháng</p>
             </div>
         </div>
@@ -14,7 +14,7 @@
         <div class="col-3 col-m-6 col-sm-6">
             <div class="counter bg-success">
                 <i class="fas fa-shopping-cart"></i>
-                <h3>50 đơn hàng</h3>
+                <h3><?= $notify['numberOrder'] ?> đơn hàng</h3>
                 <p>Tổng đơn hàng trong tháng</p>
             </div>
         </div>
@@ -22,7 +22,7 @@
         <div class="col-3 col-m-6 col-sm-6">
             <div class="counter bg-warning">
                 <i class="fas fa-spinner"></i>
-                <h3>30 đơn hàng</h3>
+                <h3><?= $notify['unActiveNumber'] ?> đơn hàng</h3>
                 <p>Đơn hàng đang giao</p>
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="col-3 col-m-6 col-sm-6">
             <div class="counter bg-danger">
                 <i class="fas fa-recycle"></i>
-                <h3>3 đơn hàng</h3>
+                <h3><?= $notify['cancelNumber'] ?> đơn hàng</h3>
                 <p>Đơn hàng hủy</p>
             </div>
         </div>

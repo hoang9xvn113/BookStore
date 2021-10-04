@@ -17,46 +17,51 @@ $router
     //Trang chu
     ->get("/admin/dashboard", [AdminController::class, 'index'])
     ->get("/admin", [AdminController::class, 'index'])
-    ->any("/admin/dang-nhap", [AdminController::class, 'login'])
+    ->any("/admin/dang-nhap", [AccountController::class, 'loginAdmin'])
     //Quản lý sách
     ->get("/admin/quan-ly-sach", [BookController::class, 'index'])
     ->any("/admin/quan-ly-sach/sua-thong-tin-sach", [BookController::class, 'editBookInfo'])
     ->any("/admin/quan-ly-sach/them-sach", [BookController::class, 'addBook'])
+    ->get("/admin/quan-ly-sach/xoa-sach", [BookController::class, 'deleteBook'])
     //Quản lý thể loại
     ->get("/admin/quan-ly-the-loai", [GenreController::class, 'index'])
     ->any("/admin/quan-ly-the-loai/them-the-loai", [GenreController::class, 'addGenre'])
     ->any("/admin/quan-ly-the-loai/chinh-sua-the-loai", [GenreController::class, 'editGenre'])
+    ->get("/admin/quan-ly-the-loai/xoa-the-loai", [GenreController::class, 'deleteGenre'])
     //Quản lý khách hàng
     ->get("/admin/quan-ly-khach-hang", [CustomerController::class, 'index'])
     ->any("/admin/quan-ly-khach-hang/chinh-sua-thong-tin-khach-hang", [CustomerController::class, 'editCustomer'])
+    ->get("/admin/quan-ly-khach-hang/xoa-khach-hang", [CustomerController::class, 'deleteCustomer'])
     //Phản hồi
     ->get("/admin/phan-hoi", [FeedbackController::class, 'index'])
     ->get("/admin/phan-hoi/tra-loi", [FeedbackController::class, 'reply'])
+    ->get("/admin/phan-hoi/xoa-phan-hoi", [FeedbackController::class, 'deleteComment'])
     //Quản lý đơn hàng nhập
     ->get("/admin/quan-ly-don-hang-nhap", [ImportOrderController::class, 'index'])
     ->any("/admin/quan-ly-don-hang-nhap/them-don-hang-nhap", [ImportOrderController::class, 'addImportOrder'])
     ->any("/admin/quan-ly-don-hang-nhap/chi-tiet-don-hang-nhap", [ImportOrderController::class, 'editImportOrder'])
+    ->get("/admin/quan-ly-nha-cung-cap/huy-don-hang-nhap", [ImportOrderController::class, 'cancelImportOrder'])
     //Quản lý đơn hàng bán
     ->get("/admin/quan-ly-don-hang-ban", [SaleOrderController::class, "index"])
     ->any("/admin/quan-ly-don-hang-ban/chi-tiet-don-hang-ban", [SaleOrderController::class, "editSaleOrder"])
+    ->get("/admin/quan-ly-don-hang-ban/huy-don-hang-ban", [SaleOrderController::class, "cancelSaleOrder"])
     //Quản lý nhà cung cấp
     ->get("/admin/quan-ly-nha-cung-cap", [SupplierController::class, 'index'])
     ->any("/admin/quan-ly-nha-cung-cap/them-nha-cung-cap", [SupplierController::class, 'addSupplier'])
     ->any("/admin/quan-ly-nha-cung-cap/chinh-sua-nha-cung-cap", [SupplierController::class, 'editSupplier'])
-
-
+    ->get("/admin/quan-ly-nha-cung-cap/xoa-nha-cung-cap", [SupplierController::class, 'deleteSupplier'])
 
 //Client
     //Trang chủ
     ->get("/", [HomeController::class, 'index'])
     ->get("/trang-chu", [HomeController::class, 'index'])
     //Tài khoản
-    ->any("/tai-khoan", [CustomerController::class, 'login'])
-    ->any("/tai-khoan/dang-nhap", [CustomerController::class, 'login'])
-    ->any("/tai-khoan/dang-ky", [CustomerController::class, 'signUp'])
-    ->get("/tai-khoan/dang-xuat", [CustomerController::class, "logout"])
+    ->any("/tai-khoan", [AccountController::class, 'login'])
+    ->any("/tai-khoan/dang-nhap", [AccountController::class, 'login'])
+    ->any("/tai-khoan/dang-ky", [AccountController::class, 'signUp'])
+    ->get("/tai-khoan/dang-xuat", [AccountController::class, "logout"])
     //Cửa hàng
-    ->get("/cua-hang", [BookController::class, 'displayStore'])
+    ->any("/cua-hang", [BookController::class, 'displayStore'])
     ->get("/chi-tiet-sach", [BookController::class, 'viewBookDetail'])
     //Liên lạc
     ->any("/lien-lac", [FeedbackController::class, 'contact'])

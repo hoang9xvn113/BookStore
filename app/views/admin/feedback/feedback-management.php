@@ -37,7 +37,7 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                                         <td><?= Helper::checkStatus($comment['status']) ?></td>
                                         <td>
                                             <a href="phan-hoi/tra-loi?id=<?= $comment['id'] ?>" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Trả lời phản hồi</a>
-                                            <a href="" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a>
+                                            <a href="/admin/phan-hoi/xoa-phan-hoi?id=<?= $comment['id'] ?>" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a>
                                         </td>
                                     </tr>
                                     <?php $i++ ?>

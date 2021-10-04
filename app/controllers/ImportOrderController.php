@@ -83,5 +83,12 @@ class ImportOrderController {
 
         header("Location: /admin/quan-ly-don-hang-nhap");
     }
+
+    function cancelImportOrder($request) {
+        if (isset($request['id'])) {
+            $status = $this->importOrderModel->cancelImportOrder($request['id']);
+        }
+        header("Location: /admin/quan-ly-don-hang-nhap");
+    }
         
 }

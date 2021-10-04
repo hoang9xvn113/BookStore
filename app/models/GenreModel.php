@@ -23,4 +23,12 @@ class GenreModel extends Model {
         $update = "update genre set name='$genreName', status=$genreStatus where id=$genreId";
         return $this->update($update);
     }
+
+    function deleteGenre($id) {
+        if ($id === "") {
+            return false;
+        }
+        $update = "update genre set status = 0 where id=$id";
+        return $this->update($update);
+    }
 }

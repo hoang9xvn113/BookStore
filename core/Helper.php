@@ -44,6 +44,15 @@ class Helper
         echo "<script>alert('$message') </script>";
     }
 
+    public static function checkDeleteStatus(bool $status): void {
+        if ($status) {
+            $message = "Xóa thành công";
+        } else {
+            $message = "Xóa không thành công";
+        }
+        echo "<script>alert('$message') </script>";
+    }
+
     public static function checkSendStatus(bool $status): void {
         if ($status) {
             $message = "Gửi thành công";
@@ -57,12 +66,15 @@ class Helper
      * @return string Trả về trạng thái
      */
     public static function checkStatus(int $status): string {
-        if ($status) {
+        if ($status == 1) {
             $message = "Active";
             $class = "bg-success";
-        } else {
+        } else if ($status == 0) {
             $message = "Unactive";
             $class = "bg-warning";
+        } else if ($status == -1) {
+            $message = "cancel";
+            $class = "bg-danger";
         }
 
         return "<small class='btn-1 $class'>$message</small>";
