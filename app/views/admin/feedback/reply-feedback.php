@@ -1,4 +1,8 @@
-<?php include_once INCLUDE_PATH . "adminHeader.php" ?>
+<?php
+
+use Core\Helper;
+
+include_once INCLUDE_PATH . "adminHeader.php" ?>
 
 
 <div class="wrapper">
@@ -11,7 +15,7 @@
                         </h3>
                     </div>
                     <div class="card-content">
-                        <div class="form row">
+                        <form action="" method="POST" class="form row">
                             <div class="col-7 row">
                                 <div class="col-4">
                                     <label for="">Tên khách hàng</label>
@@ -25,7 +29,7 @@
                                     <label for="">Email</label>
                                 </div>
                                 <div class="col-8">
-                                    <input type="email" name=""  id="" value="<?= $comment['email'] ?>" readonly>
+                                    <input type="email" name="email"  id="" value="<?= $comment['email'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="col-7 row">
@@ -41,16 +45,19 @@
                                     <label for="">Tin nhắn trả lời</label>
                                 </div>
                                 <div class="col-8">
-                                    <textarea name="message" id="" cols="30" rows="10"></textarea>
+                                    <textarea name="message" id="" cols="30" rows="10"><?= $comment['reply'] ?></textarea>
                                 </div>
                             </div>
                             <div class="col-7 row">
                                 <div class="col-4"></div>
                                 <div class="col-8">
-                                    <a class="btn-2 bg-success">Gửi phản hồi</a>
+                                    <button type="submit" class="btn-2 bg-success">Gửi phản hồi</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
+                        <?php if (isset($status)): ?>
+                            <?php Helper::checkSendStatus($status) ?>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>

@@ -2,8 +2,37 @@
 
 namespace Core;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Helper
 {
+    public static function sendEmail($mailAddress, $message) {
+        try {
+            $mail = new PHPMailer();
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'ssl';
+            $mail->Host = "smtp.gmail.com";
+            $mail->Port = "465";
+            $mail->isHTML();
+            $mail->Username = "nguyenvanhoang11122000@gmail.com";
+            $mail->Password = "Lttbcltcf123";
+            $mail->setFrom("no-reply@howcode.org");
+            $mail->Subject = "ABCBook Company ";
+            $mail->Body = $message;
+            $mail->addAddress($mailAddress);
+    
+            $mail->send();
+            $status = true;
+
+        } catch (Exception $e) {
+            $status = false;
+        }
+        return $status;
+    }
+
     public static function getParams(string $stringParams): array
     {
         $params = explode('&', $stringParams);

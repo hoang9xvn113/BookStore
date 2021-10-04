@@ -3,7 +3,6 @@
 use Core\App;
 use Core\Router;
 
-
 require_once "core/Autoload.php";
 
 session_start();
@@ -34,7 +33,7 @@ $router
     ->get("/admin/quan-ly-khach-hang/xoa-khach-hang", [CustomerController::class, 'deleteCustomer'])
     //Phản hồi
     ->get("/admin/phan-hoi", [FeedbackController::class, 'index'])
-    ->get("/admin/phan-hoi/tra-loi", [FeedbackController::class, 'reply'])
+    ->any("/admin/phan-hoi/tra-loi", [FeedbackController::class, 'reply'])
     ->get("/admin/phan-hoi/xoa-phan-hoi", [FeedbackController::class, 'deleteComment'])
     //Quản lý đơn hàng nhập
     ->get("/admin/quan-ly-don-hang-nhap", [ImportOrderController::class, 'index'])

@@ -1,5 +1,6 @@
 <?php
 
+use Core\Helper;
 use Core\View;
 
 class FeedbackController {
@@ -18,10 +19,16 @@ class FeedbackController {
 
     function reply($request) {
         if (isset($request['id'])) {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $status = Helper::sendEmail($request['email'], $request['message']);
+                if ($status) {
+                    $status = $this->feedbackModel->reply($request['id'], $request['message']);
+                }
+            }
 
             $comment = $this->feedbackModel->getComment($request['id']);
             if ($comment) {
-                echo View::make("admin/feedback/reply-feedback", ['comment'=>$comment]);
+                echo View::make("admin/feedback/reply-feedback", ['comment'=>$comment, "status"=>$status ?? null]);
                 return;
             }
         } 

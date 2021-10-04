@@ -33,4 +33,10 @@ class FeedbackModel extends Model
         $delete = "delete from feedback where id = $id";
         return $this->delete($delete);
     }
+
+    function reply($id, $message) {
+        if ($id === "") return false;
+        $update = "update feedback set status = 1, reply='$message' where id=$id";
+        return $this->update($update);
+    }
 }

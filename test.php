@@ -1,5 +1,6 @@
 <?php
 
-    echo phpversion();
+
+require_once "core/Autoload.php";
 
 ?>

@@ -6,6 +6,7 @@ define("VIEWS_PATH", dirname(__DIR__) . DIRECTORY_SEPARATOR . "app/views");
 define("MODELS_PATH", dirname(__DIR__) . DIRECTORY_SEPARATOR . "app/models");
 define("CONTROLLERS_PATH", dirname(__DIR__) . DIRECTORY_SEPARATOR . "app/controllers");
 define("INCLUDE_PATH", dirname(__DIR__) . DIRECTORY_SEPARATOR . "inc" . DIRECTORY_SEPARATOR);
+define("MAIL_PATH", dirname(__DIR__) . DIRECTORY_SEPARATOR . "mail/src/");
 define("DOMAIN_NAME", "localhost");
 define("CSS_PATH", "/public/css/");
 define("JS_PATH",  "/public/js/");

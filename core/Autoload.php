@@ -2,6 +2,10 @@
 
 require_once "Config.php";
 require_once "Model.php";
+require_once MAIL_PATH . "Exception.php";
+require_once MAIL_PATH . "PHPMailer.php";
+require_once MAIL_PATH . "SMTP.php";
+
 
 spl_autoload_register(function ($className) {
     $target_file = "$className.php";
@@ -18,6 +22,6 @@ spl_autoload_register(function ($className) {
     }
 
     if (file_exists($target_file)) {
-        require_once $target_file;
+        include_once $target_file;
     }
 });
