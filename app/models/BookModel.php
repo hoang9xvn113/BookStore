@@ -68,7 +68,11 @@ class BookModel extends Model
 
     function getBookList()
     {
-        $select = "SELECT book.id, book.name, genre.name as genre_name, author, price, content, book.amount, image,sale_order_detail.amount as saleAmount, number_click, book.status FROM book, genre, sale_order_detail WHERE genre_id = genre.id and book.id = sale_order_detail.book_id ORDER BY book.update_at desc";
+        $select = "SELECT book.id, book.name, genre.name as genre_name, author, price, content, book.amount, image,SUM(sale_order_detail.amount) as saleAmount, number_click, book.status 
+        FROM book, genre, sale_order_detail 
+        WHERE genre_id = genre.id and book.id = sale_order_detail.book_id 
+        group by book_id
+        ORDER BY book.update_at desc";
 
         return $this->select($select);
     }
