@@ -91,17 +91,19 @@ class BookModel extends Model
     }
 
     function getBookListbyClick() {
-        $select = "SELECT book.id, book.name, genre.name as genre_name, author, price, content, book.amount, image,sale_order_detail.amount as saleAmount, number_click, book.status 
+        $select = "SELECT book.id, book.name, genre.name as genre_name, author, price, content, book.amount, image,SUM(sale_order_detail.amount) as saleAmount, number_click, book.status 
         FROM book, genre, sale_order_detail
         WHERE genre_id = genre.id and book.id = sale_order_detail.book_id 
+        group by book_id
         order by number_click desc, book.update_at desc";
         return $this->select($select);
     }
 
     function getBookListbyBestSelling() {
-        $select = "SELECT book.id, book.name, genre.name as genre_name, book.author, book.price, book.content, book.amount, book.image, number_click, book.status, sale_order_detail.amount as saleAmount
+        $select = "SELECT book.id, book.name, genre.name as genre_name, book.author, book.price, book.content, book.amount, book.image, number_click, book.status, SUM(sale_order_detail.amount) as saleAmount
         FROM book,genre, sale_order_detail 
         WHERE genre_id = genre.id and book.id = sale_order_detail.book_id 
+        group by book_id
         ORDER BY saleAmount desc ";
         return $this->select($select);
     }
