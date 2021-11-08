@@ -13,7 +13,7 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                         <h3>
                             Chi tiết đơn hàng nhập 
                         </h3>
-                        <span><button type="submit" href="" class="btn-2 bg-warning"><i class="fas fa-edit"></i> Cập nhật đơn hàng</button></span>
+                        <span><button type="submit" href="" class="btn-2 bg-warning"><i class="fas fa-edit"></i>Xác nhận đơn hàng</button></span>
                     </div>
                     <div class="card-content">
                         <div class="form row">

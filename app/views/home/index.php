@@ -60,23 +60,7 @@
         <div class="lastest-published-items container mr-b-3">
             <div class="title mr-b-2 d-flex align-items-center justify-content-between">
                 <h1>Các sản phẩm nổi bật nhất</h1>
-                <div class="categories owl-carousel">
-                    <div class="category-card">
-                        <a class="btn bg--white active border--dark border-r-2 pd-btn-1">All</a>
-                    </div>
-                    <div class="category-card">
-                        <a class="btn bg--white border--dark border-r-2 pd-btn-1">Horror</a>
-                    </div>
-                    <div class="category-card">
-                        <a class="btn bg--white border--dark border-r-2 pd-btn-1">Thriller</a>
-                    </div >
-                    <div class="category-card">
-                        <a class="btn bg--white border--dark border-r-2 pd-btn-1">Science Fiction</a>
-                    </div>
-                    <div class="category-card">
-                        <a class="btn bg--white border--dark border-r-2 pd-btn-1">History</a>
-                    </div>
-                </div>
+
             </div>
 
             <div class="product-list d-grid col-150 mr-b-2">

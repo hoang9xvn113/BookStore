@@ -11,27 +11,13 @@
         <div class="d-flex mr-b-3 st">
             <div class="filter">
                 <div class="Genres mr-b-2">
-                    <h3>Filter by Genres</h3>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>History</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>History</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>History</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>History</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>History</label>
-                    </p>
+                    <h3>Loại sách</h3>
+                    <?php foreach($genreList as $genre): ?>
+                        <p>
+                            <input type="checkbox" name="" id="">
+                            <label><?= $genre['name'] ?></label>
+                        </p>
+                    <?php endforeach ?>
                 </div>
 
                 <div class="price mr-b-2">
@@ -46,50 +32,15 @@
                     </select>
                 </div>
 
-                <div class="Publisher mr-b-2">
-                    <h3>Filter by Genres</h3>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>Green Publications</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>Anodo Publications</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>Rinku Publication</label>
-                    </p>
-                </div>
-
-                <div class="Author mr-b-2">
-                    <h3>Filter by Genres</h3>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>Buster Hyman</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>Phil Harmotic</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" name="" id="">
-                        <label>Cam L.Toe</label>
-                    </p>
-                </div>
-
                 <button class="btn bg--red pd-btn-2 border-r-1">Filter</button>
             </div>
 
             <div class="store">
                 <div class="text-align-right">
                     <select name="" id="" class="w-40 mr-b-1">
-                        <option value="">Filter by Rating</option>
-                        <option value="">1 Star Rating</option>
-                        <option value="">2 Star Rating</option>
-                        <option value="">3 Star Rating</option>
-                        <option value="">4 Star Rating</option>
-                        <option value="">5 Star Rating</option>
+                        <option value="0">Xem tất cả</option>
+                        <option value="1">Xem các sách bán chạy trong tháng</option>
+                        <option value="2">Xem các sách hot trong tháng</option>
                     </select>
                 </div>
 

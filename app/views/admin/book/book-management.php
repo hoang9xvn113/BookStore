@@ -57,7 +57,6 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                                         <td><?= Helper::checkStatus($book['status']) ?></td>
                                         <td>
                                             <a href="/admin/quan-ly-sach/sua-thong-tin-sach?id=<?= $book['id'] ?>" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Sửa</a> 
-                                            <a href="/admin/quan-ly-sach/xoa-sach?id=<?= $book['id'] ?>" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a>
                                         </td>
                                         <?php $i++ ?>
                                     </tr>

@@ -89,13 +89,12 @@ class BookController
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $bookList = $this->bookModel->searchBookListbyName($request['name']);
         }
-        echo View::make("store/index", ['books'=>$bookList]);
+        $genreList = $this->genreModel->getGenreList();
+        echo View::make("store/index", ['books'=>$bookList, 'genreList'=>$genreList]);
     }
 
     function viewBookDetail($request) {
         if (isset($request['id'])) {
-
-        
             $book = $this->bookModel->getBookbyId($request['id']);
 
             if ($book) {

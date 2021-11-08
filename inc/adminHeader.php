@@ -222,6 +222,26 @@ Session::checkAdminLogin();
                     </span>
                 </a>
             </li>
+            <li class="sidebar-nav-item">
+                <a href="/admin/quan-ly-nhan-vien" class="sidebar-nav-link">
+                    <div>
+                        <i class="fas fa-user-alt"></i>
+                    </div>
+                    <span>
+                        Quản lý nhân viên
+                    </span>
+                </a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="/admin/quan-ly-cham-cong" class="sidebar-nav-link">
+                    <div>
+                        <i class="fas fa-arrow"></i>
+                    </div>
+                    <span>
+                        Quản lý chấm công
+                    </span>
+                </a>
+            </li>
         </ul>
     </div>
 

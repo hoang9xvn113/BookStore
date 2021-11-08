@@ -39,8 +39,7 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                                         <td><?= $saleOrder['delivery_date'] ?></td>
                                         <td><?= Helper::checkStatus($saleOrder['status']) ?></td>
                                         <td>
-                                            <a href="/admin/quan-ly-don-hang-ban/chi-tiet-don-hang-ban?id=<?= $saleOrder['id'] ?>" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Xem</a> 
-                                            <a href="/admin/quan-ly-don-hang-ban/huy-don-hang-ban?id=<?= $saleOrder['id'] ?>" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a>
+                                            <a href="/admin/quan-ly-don-hang-ban/chi-tiet-don-hang-ban?id=<?= $saleOrder['id'] ?>" class="btn-1 bg-primary"><i class="fas fa-edit"></i> In</a> 
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

@@ -57,4 +57,11 @@ class CartController {
     function checkout($request) {
 
     }
+
+    function deleteCart($request) {
+        if (isset($request['id'])) {
+            
+        }
+        header("Location: /gio-hang");
+    }
 }

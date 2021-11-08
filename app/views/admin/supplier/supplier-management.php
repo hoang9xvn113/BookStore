@@ -39,8 +39,7 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                                         <td><?= $supplier['address'] ?></td>
                                         <td><?= Helper::checkStatus($supplier['status']) ?></td>
                                         <td>
-                                            <a href="/admin/quan-ly-nha-cung-cap/chinh-sua-nha-cung-cap?id=<?= $supplier['id'] ?>" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Xem</a> 
-                                            <a href="/admin/quan-ly-nha-cung-cap/xoa-nha-cung-cap?id=<?= $supplier['id'] ?>" class="btn-1 bg-danger"><i class="fas fa-backspace"></i> Xóa</a>
+                                            <a href="/admin/quan-ly-nha-cung-cap/chinh-sua-nha-cung-cap?id=<?= $supplier['id'] ?>" class="btn-1 bg-primary"><i class="fas fa-edit"></i> Cập nhật</a> 
                                         </td>
                                     </tr>
                                     <?php $i++ ?>

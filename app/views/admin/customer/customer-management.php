@@ -13,7 +13,13 @@ include_once INCLUDE_PATH . "adminHeader.php" ?>
                         <h3>
                             Bảng sách
                         </h3>
-                        
+                        <form action="" method="get">
+                            <select name="type" id="">
+                                <option value="0">Xem tất cả</option>
+                                <option value="1">Xem khách hàng tiêu nhiều nhất</option>
+                            </select>
+                            <button type="submit">Xem</button>
+                            </form>
                     </div>
                     <div class="card-content">
                         <table>
