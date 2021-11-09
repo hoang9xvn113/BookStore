@@ -34,8 +34,8 @@ Session::checkAdminLogin();
                 </a>
             </li>
             <li class="nav-item">
-                <img src="<?= IMAGES_PATH . "AT-pro-white.png" ?>"class="logo logo-light" alt="">
-                <img src="<?= IMAGES_PATH . "AT-pro-black.png"?>" class="logo logo-dark" alt="">
+                <img src="<?= IMAGES_PATH . "logo.webp" ?>"class="logo logo-light" alt="">
+                <img src="<?= IMAGES_PATH . "logo.webp"?>" class="logo logo-dark" alt="">
             </li>
         </ul>
 
