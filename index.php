@@ -67,7 +67,7 @@ $router
     //Giỏ hàng
     ->any("/gio-hang", [CartController::class, 'index'])
     ->get("/them-vao-gio-hang", [CartController::class, 'addtoCart'])
-    ->post("/thanh-toan", [CartController::class, 'checkout'])
+    ->any("/gio-hang/thanh-toan", [CartController::class, 'checkout'])
     ->get("/gio-hang/xoa-hang", [CartController::class, 'deleteCart']);
 
 

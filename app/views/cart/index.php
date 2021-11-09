@@ -3,7 +3,7 @@
 use Core\Helper;
 
 include_once INCLUDE_PATH . "/header.php" ?>
-<form action="" method="POST">
+<form action="/gio-hang/thanh-toan" method="POST">
     <main class="container">
         <div class="back position-relative mr-b-3">
             <div class="back-image">
@@ -36,9 +36,7 @@ include_once INCLUDE_PATH . "/header.php" ?>
                 </tbody>
             </table>
         </div>
-        <label for="">Địa chỉ giao hàng</label>
-        <input type="text" name="address">
-        <p class="text-align-right mr-b-2"><button type="submit" class="btn test bg--red border-r-2 pd-btn-2">Đặt hàng</a></button>
+        <p class="text-align-right mr-b-2"><button type="submit" class="btn test bg--red border-r-2 pd-btn-2">Thanh toán</button>
         <?php
         if (isset($status)) {
             Helper::checkAddStatus($status);
